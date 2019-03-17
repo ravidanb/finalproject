@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
-    private FirebaseAuth auth;
+    //private FirebaseAuth auth;
     private Button btnSignUp, btnLogin;
     private ProgressDialog PD;
 
@@ -34,12 +34,12 @@ public class RegisterActivity extends AppCompatActivity {
         PD.setCancelable(true);
         PD.setCanceledOnTouchOutside(false);
 
-        auth = FirebaseAuth.getInstance();
+        /*auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(RegisterActivity.this, MainActivity.class));
             finish();
-        }
+        }*/
 
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                 try {
                     if (password.length() > 0 && email.length() > 0) {
                         PD.show();
-                        auth.createUserWithEmailAndPassword(email, password)
+                        /*auth.createUserWithEmailAndPassword(email, password)
                                 .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
 
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         }
                                         PD.dismiss();
                                     }
-                                });
+                                });*/
                     } else {
                         Toast.makeText(
                                 RegisterActivity.this,

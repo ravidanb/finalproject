@@ -22,7 +22,7 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
     private EditText edtMode;
     private TextView txtMode;
     private Button submit;
-    private FirebaseAuth auth;
+    //private FirebaseAuth auth;
     private ProgressDialog PD;
     private TextInputLayout labelMode;
 
@@ -37,7 +37,7 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
         PD.setCancelable(true);
         PD.setCanceledOnTouchOutside(false);
 
-        auth = FirebaseAuth.getInstance();
+        //auth = FirebaseAuth.getInstance();
 
         edtMode = (EditText) findViewById(R.id.mode);
         txtMode = (TextView) findViewById(R.id.title);
@@ -72,31 +72,31 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
 
     private void callFunction(int mode) {
 
-        FirebaseUser user = auth.getCurrentUser();
+        //FirebaseUser user = auth.getCurrentUser();
         final String modeStr = edtMode.getText().toString();
         if (mode == 0) {
             if (TextUtils.isEmpty(modeStr)) {
                 edtMode.setError("Value Required");
             } else {
                 PD.show();
-                auth.sendPasswordResetEmail(modeStr).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(ForgetAndChangePasswordActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(ForgetAndChangePasswordActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
-                        }
-                        PD.dismiss();
+                //auth.sendPasswordResetEmail(modeStr).addOnCompleteListener(new OnCompleteListener<Void>() {
+                //    @Override                    public void onComplete(@NonNull Task<Void> task) {
+                //        if (task.isSuccessful()) {
+                 //           Toast.makeText(ForgetAndChangePasswordActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                 //       } else {
+                 //           Toast.makeText(ForgetAndChangePasswordActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                 //       }
+                  //      PD.dismiss();
 
-                    }
-                });
+                //    }
+               // });
             }
         } else if (mode == 1) {
             if (TextUtils.isEmpty(modeStr)) {
                 edtMode.setError("Value Required");
             } else {
                 PD.show();
-                user.updatePassword(modeStr)
+                /*user.updatePassword(modeStr)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override                            public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
@@ -107,14 +107,14 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
                                 PD.dismiss();
                             }
 
-                        });
+                        });*/
             }
         } else if (mode == 2) {
             if (TextUtils.isEmpty(modeStr)) {
                 edtMode.setError("Value Required");
             } else {
                 PD.show();
-                user.updateEmail(modeStr)
+                /*user.updateEmail(modeStr)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override                            public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
@@ -124,10 +124,10 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
                                 }
                                 PD.dismiss();
                             }
-                        });
+                        });*/
             }
         } else {
-            if (user != null) {
+            /*if (user != null) {
                 PD.show();
                 user.delete()
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -139,8 +139,8 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
                                 }
                                 PD.dismiss();
                             }
-                        });
-            }
+                        });*/
+           // }
         }
 
     }

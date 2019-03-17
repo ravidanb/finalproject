@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
-    private FirebaseAuth auth;
+    //private FirebaseAuth auth;
     private Button btnSignUp, btnLogin;
     private ProgressDialog PD;
 
@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         PD.setMessage("Loading...");
         PD.setCancelable(true);
         PD.setCanceledOnTouchOutside(false);
-        auth = FirebaseAuth.getInstance();
+        //auth = FirebaseAuth.getInstance();
 
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (password.length() > 0 && email.length() > 0) {
                         PD.show();
-                        auth.signInWithEmailAndPassword(email, password)
+                       /* auth.signInWithEmailAndPassword(email, password)
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
 
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                         PD.dismiss();
                                     }
-                                });
+                                });*/
                     } else {
                         Toast.makeText(
                                 LoginActivity.this,
@@ -96,10 +96,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override    protected void onResume() {
-        if (auth.getCurrentUser() != null) {
+        /*if (auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
-        }
+        }*/
         super.onResume();
     }
 }
